@@ -117,10 +117,21 @@ def search_info():
     global infos
     for info in infos:
         if search_name == info['name']:
-            print(info)
+            print('查询到的学员信息如下：')
+            print(f"该学员的学号是{info['id']},姓名是{info['name']},手机号是{info['tel']}")
             break
     else:
         print('该用户不存在')
+
+
+def print_all():
+    """
+    打印所有学员信息
+    :return:
+    """
+    print('学号\t姓名\t手机号')
+    for info in infos:
+        print(f'{info["id"]}\t{info["name"]}\t{info["tel"]}')
 
 
 # 系统功能需要循环使用，直到用户输入6，才退出系统
@@ -142,8 +153,15 @@ while True:
     elif user_num == 4:
         search_info()
     elif user_num == 5:
-        print('显示所有')
+        print_all()
     elif user_num == 6:
-        print('退出系统')
+        exit_flag = input("确定要退出吗？ 如果确定请输入yes或者y，否则输入no或者n：")
+        exit_flag = exit_flag.lower()
+        if exit_flag == 'yes' or exit_flag == 'y':
+            break
+        elif exit_flag == 'no' or exit_flag == 'n':
+            pass
+        else:
+            print('输入有误，请重新输入！！！')
     else:
         print('输入功能序号有误，请重新输入')
