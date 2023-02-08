@@ -102,6 +102,27 @@ def modify_info():
     print(infos)
 
 
+def search_info():
+    """
+        查询学员
+        需求分析：
+            1、用户输入目标学员姓名
+            2、检查这个学员是否存在
+                2.1、如果存在，则显示这个学员信息
+                2.2、如果不存在，则提示 ”该用户不存在“
+            3、对应的if条件成立的位置调用该函数
+        :return:
+        """
+    search_name = input('请输入要查询的学员姓名：')
+    global infos
+    for info in infos:
+        if search_name == info['name']:
+            print(info)
+            break
+    else:
+        print('该用户不存在')
+
+
 # 系统功能需要循环使用，直到用户输入6，才退出系统
 # 如果用户输入1-6以外的数据，则需要提示用户 输入错误
 while True:
@@ -119,7 +140,7 @@ while True:
     elif user_num == 3:
         modify_info()
     elif user_num == 4:
-        print('查询')
+        search_info()
     elif user_num == 5:
         print('显示所有')
     elif user_num == 6:
