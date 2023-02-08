@@ -37,7 +37,7 @@ def add_info():
 
     # 声明info是全局变量
     global infos
-    # 检测用户输入的姓名是否存在，存在则报错，不存在则新增
+    # 检测用户输入的姓名是否存在，存在则报错
     for info in infos:
         if new_name == info['name']:
             print('该用户已经存在！！！')
@@ -54,6 +54,31 @@ def add_info():
     print(infos)
 
 
+def del_info():
+    """
+    删除学员
+    需求分析：
+        1、用户输入目标学员姓名
+        2、检查这个学员是否存在
+            2.1、如果存在，则列表删除这个数据
+            2.2、如果不存在，则提示”该用户不存在“
+        3、对应的if条件成立的位置调用该函数
+    :return:
+    """
+    # 1、用户输入要删除的学员姓名
+    del_name = input('请输入要删除的学员姓名：')
+    global infos
+    # 2、判断学员是否存在，如果存在则删除，如果不存在则报错
+    for info in infos:
+        if del_name == info['name']:
+            infos.remove(info)
+            print(f'用户{del_name}已经被删除')
+            break
+    else:
+        print('该用户不存在')
+    print(infos)
+
+
 # 系统功能需要循环使用，直到用户输入6，才退出系统
 # 如果用户输入1-6以外的数据，则需要提示用户 输入错误
 while True:
@@ -67,7 +92,7 @@ while True:
     if user_num == 1:
         add_info()
     elif user_num == 2:
-        print('删除')
+        del_info()
     elif user_num == 3:
         print('修改')
     elif user_num == 4:
