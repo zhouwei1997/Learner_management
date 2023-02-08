@@ -79,6 +79,29 @@ def del_info():
     print(infos)
 
 
+def modify_info():
+    """
+    修改学员
+    需求分析：
+        1、用户输入目标学员姓名
+        2、检查这个学员是否存在
+            2.1、如果存在，则修改这个学员信息，例如手机号等
+            2.2、如果不存在，则提示”该用户不存在“
+        3、对应的if条件成立的位置调用该函数
+    :return:
+    """
+    modify_name = input('请输入要修改的学员姓名：')
+    global infos
+    for info in infos:
+        if modify_name == info['name']:
+            # 修改tel这个key的修改值，并终止循环
+            info['tel'] = input('请输入新的手机号：')
+            break
+    else:
+        print('该用户不存在')
+    print(infos)
+
+
 # 系统功能需要循环使用，直到用户输入6，才退出系统
 # 如果用户输入1-6以外的数据，则需要提示用户 输入错误
 while True:
@@ -94,7 +117,7 @@ while True:
     elif user_num == 2:
         del_info()
     elif user_num == 3:
-        print('修改')
+        modify_info()
     elif user_num == 4:
         print('查询')
     elif user_num == 5:
